@@ -1,0 +1,93 @@
+/* 색상: 어두운 우주 배경, 고대비 글자 */
+:root {
+  --bg: #0b1020;
+  --panel: #141b33;
+  --line: #2a355c;
+  --text: #eef1fa;
+  --muted: #9aa6c8;
+  --accent: #ffd27a;
+  /* Pretendard는 M6에서 로컬 파일로 추가 예정 */
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.topbar h1 { font-size: 1.25rem; margin: 0; }
+.tabs { display: flex; gap: 4px; margin-left: auto; }
+
+.tab, .help {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.tab.is-active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+/* 가로 화면: 궤도도 60% | 달 모양·관측 패널 40%, 아래 제어 바 */
+.layout {
+  flex: 1;
+  display: grid;
+  gap: 12px;
+  padding: 12px 16px;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr 1fr auto;
+  grid-template-areas:
+    "orbit moon"
+    "orbit sky"
+    "controls controls";
+}
+.orbit { grid-area: orbit; }
+.moon { grid-area: moon; }
+.sky { grid-area: sky; }
+.controls { grid-area: controls; min-height: 88px; }
+
+.panel {
+  min-height: 160px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.placeholder { color: var(--muted); margin: 0; }
+
+.note {
+  padding: 6px 16px 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* 폭 768px 미만: 위에서 아래로 쌓기 */
+@media (max-width: 767px) {
+  .topbar { flex-wrap: wrap; }
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas: "orbit" "moon" "sky" "controls";
+  }
+  .orbit { min-height: 280px; }
+}

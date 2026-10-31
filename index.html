@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>달의 위상 변화 시뮬레이션</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>달의 위상 변화</h1>
+      <nav class="tabs" aria-label="모드">
+        <button class="tab is-active" type="button">탐구</button>
+        <button class="tab" type="button">날짜</button>
+        <button class="tab" type="button">퀴즈</button>
+      </nav>
+      <button class="help" type="button" aria-label="도움말">?</button>
+    </header>
+
+    <main class="layout">
+      <section id="orbit-view" class="panel orbit" aria-label="우주에서 본 모습">
+        <p class="placeholder">궤도도 (우주 시점)</p>
+      </section>
+      <section id="moon-view" class="panel moon" aria-label="지구에서 본 달">
+        <p class="placeholder">달 모양 (지구 시점)</p>
+      </section>
+      <section id="sky-view" class="panel sky" aria-label="관측 패널">
+        <p class="placeholder">관측 패널</p>
+      </section>
+      <section id="controls" class="panel controls" aria-label="시간 제어">
+        <p class="placeholder">제어 바 (재생 · 속도 · 월령 슬라이더 · 날짜)</p>
+      </section>
+    </main>
+
+    <footer class="note">크기·거리는 실제 비율이 아닙니다.</footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
